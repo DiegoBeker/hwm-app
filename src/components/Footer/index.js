@@ -17,12 +17,11 @@ export default function Footer() {
 
 const styles = StyleSheet.create({
   footer:{
-    backgroundColor: '#1E1E1E',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent:'space-between',
     width:'100%',
-    height:60,
+    height:'10%',
     padding: 10
   },
   logo:{

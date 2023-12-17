@@ -1,12 +1,16 @@
 import { View, StyleSheet } from 'react-native';
 import Header from './src/components/Header';
 import Footer from './src/components/Footer';
+import Home from './src/pages/Home';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Header />
+      <Home />
       <Footer/>
+      <StatusBar style="auto" hidden={true}/>
     </View>
   );
 }
@@ -17,6 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems:'center',
     justifyContent:'space-between',
-    paddingTop:40
+    width:'100vw',
+    height:'100vh',
   },
 })
