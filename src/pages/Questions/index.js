@@ -5,8 +5,28 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { StatusBar } from "expo-status-bar";
 import Question from "../../components/Question";
 import Number from "../../components/Question/Number";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+
 
 export default function Questions({ navigation }) {
+  const [data, setData] = useState(undefined);
+  const [selectedQuestion, setSelectedQuestion] = useState(undefined);
+  
+  useEffect(() => {
+    axios.get(process.env.EXPO_PUBLIC_API_URL)
+      .then((response) => {
+        setData(response.data.obj);
+        setSelectedQuestion(response.data.obj[0]);
+      }).catch((err) => {
+        console.log(err);
+      });
+  },[])
+
+  function changeQuestion(number){
+    setSelectedQuestion(data[number-1]);
+  }
+
   return (
     <View style={styles.container}>
       <Header/>
@@ -27,13 +47,10 @@ export default function Questions({ navigation }) {
             <Ionicons name="information-circle-sharp" style={styles.icon} />
           </View>
         </View>
-        <Question/>
+        <Question selectedQuestion={selectedQuestion}/>
         <ScrollView horizontal={true}>
           <View style={styles.questionsArea}>
-          <Number number="1"/>
-          <Number number="2"/>
-          <Number number="3"/>
-          <Number number="4"/>
+          {data?.map((d, index) => <Number key={d.id_questao} number={index+1} changeQuestion={changeQuestion} />)}
           </View>
         </ScrollView>
       </View>

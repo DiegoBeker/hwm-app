@@ -1,11 +1,11 @@
 import { StyleSheet, Text } from "react-native"
 import { View } from "react-native"
 
-export default function Alternative() {
+export default function Alternative({ letter, answer}) {
     return (
         <View style={styles.alternative}>
-            <Text style={styles.letter}>A</Text>
-            <Text style={styles.answer}>Alternativa A lorem ipsum dolor sit amet Alternativa A lorem ipsum dolor sit amet Alternativa A lorem ipsum dolor sit amet</Text>
+            <Text style={styles.letter}>{letter}</Text>
+            <Text style={styles.answer}>{answer}</Text>
         </View>
     )
 }

@@ -2,15 +2,14 @@ import { StyleSheet, Text, View } from "react-native";
 import Alternative from "./Alternative";
 import { TouchableOpacity } from "react-native";
 
-export default function Question() {
+export default function Question({selectedQuestion}) {
+  const letters = ['A','B','C','D','E','F'];
+
   return(
     <View style={styles.container}>
       <View style={styles.question}>
-        <Text style={styles.questionText}>Adolescente, 15 anos de idade, procura atendimento ambulatorial após internação por cetoacidose diabética, quando foi diagnosticado com diabetes..............., é correto afirmar:</Text>
-        <Alternative/>
-        <Alternative/>
-        <Alternative/>
-        <Alternative/>
+        <Text style={styles.questionText}>{selectedQuestion?.questao}</Text>
+        {selectedQuestion?.alternativas?.map((a, index) => <Alternative key={a.id} letter={letters[index]} answer={a.alternativa}/>)}
         <TouchableOpacity style={styles.sendButton}>
             <Text style={styles.buttonText}>Confirmar Resposta</Text>
         </TouchableOpacity>
@@ -22,7 +21,6 @@ export default function Question() {
 const styles = StyleSheet.create({
   container:{
    width:'100%',
-   padding:10,
    alignItems:"center",
   },
   question:{
