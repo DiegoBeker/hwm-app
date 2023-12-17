@@ -6,7 +6,9 @@ export default function MenuCard({
   icon,
   title,
   text,
-  action
+  action,
+  navigation,
+  name,
 }) {
   return (
     <View style={styles.container}>
@@ -24,7 +26,7 @@ export default function MenuCard({
           <Text style={styles.description}>{text}</Text>
         </View>
         <View style={styles.buttonArea}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(name)}>
             <Text style={{fontWeight: "bold"}}>{action}</Text>
           </TouchableOpacity>
         </View>

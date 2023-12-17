@@ -1,27 +1,17 @@
-import { View, StyleSheet } from 'react-native';
-import Header from './src/components/Header';
-import Footer from './src/components/Footer';
 import Home from './src/pages/Home';
-import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Questions from './src/pages/Questions';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header />
-      <Home />
-      <Footer/>
-      <StatusBar style="auto" hidden={true}/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
+        <Stack.Screen name="Questions" component={Questions}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#1E1E1E',
-    flex: 1,
-    alignItems:'center',
-    justifyContent:'space-between',
-    width:'100vw',
-    height:'100vh',
-  },
-})
