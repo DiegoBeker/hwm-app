@@ -2,6 +2,7 @@ import { StyleSheet, View } from "react-native";
 import MenuCard from "../../components/MenuCard";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { StatusBar } from "expo-status-bar";
 
 export default function Home({ navigation }){
   return(
@@ -17,7 +18,7 @@ export default function Home({ navigation }){
         name="Questions"
       />
       <MenuCard 
-        icon="toggle"
+        icon="options-outline"
         title="PERSONALIZAR"
         text=""
         action="Acessar"
@@ -39,6 +40,7 @@ export default function Home({ navigation }){
       />
       </View>
       <Footer/>
+      <StatusBar hidden={true}/>
     </View>
   )
 }
