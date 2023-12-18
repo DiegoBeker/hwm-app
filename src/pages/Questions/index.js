@@ -12,19 +12,29 @@ import axios from 'axios';
 export default function Questions({ navigation }) {
   const [data, setData] = useState(undefined);
   const [selectedQuestion, setSelectedQuestion] = useState(undefined);
+  const [next, setNext] = useState(undefined);
+  const [correctIds, setCorrectIds] = useState([]);
+  const [wrongIds, setWrongIds] = useState([]);
+  const [finished, setFinished] = useState(false);
+
   
   useEffect(() => {
     axios.get(process.env.EXPO_PUBLIC_API_URL)
       .then((response) => {
         setData(response.data.obj);
         setSelectedQuestion(response.data.obj[0]);
+        setNext(1);
       }).catch((err) => {
         console.log(err);
       });
-  },[])
+  },[]);
 
   function changeQuestion(number){
-    setSelectedQuestion(data[number-1]);
+    if(number===data.length){
+      setFinished(true);
+      return
+    }
+    setSelectedQuestion(data[number]);
   }
 
   return (
@@ -47,10 +57,29 @@ export default function Questions({ navigation }) {
             <Ionicons name="information-circle-sharp" style={styles.icon} />
           </View>
         </View>
-        <Question selectedQuestion={selectedQuestion}/>
+        <Question 
+          selectedQuestion={selectedQuestion}
+          next={next}
+          setNext={setNext}
+          correctIds={correctIds}
+          setCorrectIds={setCorrectIds}
+          wrongIds={wrongIds}
+          setWrongIds={setWrongIds}
+          changeQuestion={changeQuestion}
+          finished={finished}
+        />
         <ScrollView horizontal={true}>
           <View style={styles.questionsArea}>
-          {data?.map((d, index) => <Number key={d.id_questao} number={index+1} changeQuestion={changeQuestion} />)}
+          {data?.map((d, index) => (
+            <Number 
+              key={d.id_questao}
+              id={d.id_questao}
+              number={index+1}
+              selectedQuestion={selectedQuestion}
+              correctIds={correctIds}
+              wrongIds={wrongIds}
+            />
+          ))}
           </View>
         </ScrollView>
       </View>

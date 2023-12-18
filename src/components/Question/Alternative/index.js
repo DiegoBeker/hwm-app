@@ -1,18 +1,19 @@
-import { StyleSheet, Text } from "react-native"
-import { View } from "react-native"
+import { Pressable, StyleSheet, Text } from "react-native"
 
-export default function Alternative({ letter, answer}) {
+export default function Alternative({ letter, answer, selectedAnswer, select, id, finished}) {
+    const styles = stylesFunction(selectedAnswer, id);
+    
     return (
-        <View style={styles.alternative}>
+        <Pressable style={styles.alternative} onPress={() => select(id)} disabled={finished}>
             <Text style={styles.letter}>{letter}</Text>
             <Text style={styles.answer}>{answer}</Text>
-        </View>
+        </Pressable>
     )
 }
 
-const styles = StyleSheet.create({
+const stylesFunction = (selectedAnswer, id) => StyleSheet.create({
     alternative: {
-        backgroundColor: '#D9D9D9',
+        backgroundColor: selectedAnswer === id ? '#1D1D1D' : '#D9D9D9',
         borderRadius: 10,
         elevation: 10, // Para Android
         shadowOffset: { width: 0, height: 4 }, // Para iOS
@@ -28,10 +29,12 @@ const styles = StyleSheet.create({
     letter:{
         fontWeight:"bold",
         fontSize:32,
+        color: selectedAnswer === id ? '#D9D9D9' : '#1D1D1D',
     },
     answer:{
         fontSize:12,
         width: "90%",
-        textAlign:"left"
+        textAlign:"left",
+        color: selectedAnswer === id ? '#D9D9D9' : '#1D1D1D',
     }
 })
