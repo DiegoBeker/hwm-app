@@ -1,43 +1,45 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 
 export default function Footer() {
-  return(
+  return (
     <View style={styles.footer}>
-      <Image 
+      <Image
         style={styles.logo}
         source={require('../../../assets/BottomLogo.png')}
       />
       <View style={styles.textArea}>
         <Text style={styles.text}>@Copyright 2023 HWM</Text>
-        <Text style={[styles.text, styles.underline]}>Políticas de privacidade • Termos de uso</Text>
+        <Text style={[styles.text, styles.underline]}>
+          Políticas de privacidade • Termos de uso
+        </Text>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-  footer:{
+  footer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'space-between',
-    width:'100%',
-    height:'10%',
+    justifyContent: 'space-between',
+    width: '100%',
+    height: '10%',
     padding: 10
   },
-  logo:{
+  logo: {
     height: 20,
     width: 80
   },
-  textArea:{
-    alignItems:'flex-end',
-    justifyContent:'space-between'
+  textArea: {
+    alignItems: 'flex-end',
+    justifyContent: 'space-between'
   },
-  text:{
+  text: {
     margin: 2,
     color: '#6E6E6E',
-    fontSize: 8,
+    fontSize: 8
   },
-  underline:{
-    textDecorationLine:'underline'
+  underline: {
+    textDecorationLine: 'underline'
   }
-})
+});

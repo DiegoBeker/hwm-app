@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -8,7 +8,7 @@ export default function MenuCard({
   text,
   action,
   navigation,
-  name,
+  name
 }) {
   return (
     <View style={styles.container}>
@@ -26,51 +26,54 @@ export default function MenuCard({
           <Text style={styles.description}>{text}</Text>
         </View>
         <View style={styles.buttonArea}>
-          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(name)}>
-            <Text style={{fontWeight: "bold"}}>{action}</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate(name)}
+          >
+            <Text style={{ fontWeight: 'bold' }}>{action}</Text>
           </TouchableOpacity>
         </View>
       </LinearGradient>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: '100%'
   },
   background: {
     backgroundColor: 'rgb(175,90,193)',
     borderRadius: 10,
-    padding:10
+    padding: 10
   },
-  title:{
-    flexDirection:"row",
-    alignItems:"center",
-    justifyContent: "flex-start",
-    gap:8
+  title: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    gap: 8
   },
-  text:{
+  text: {
     color: '#F0F0F0',
-    fontSize:32,
-    fontWeight:"bold"
+    fontSize: 32,
+    fontWeight: 'bold'
   },
   description: {
     color: '#F0F0F0',
-    fontSize:12,
-    textShadowColor:'black',
-    textShadowOffset: {width: -1, height: 1},
+    fontSize: 12,
+    textShadowColor: 'black',
+    textShadowOffset: { width: -1, height: 1 },
     textShadowRadius: 10,
-    marginVertical:15
+    marginVertical: 15
   },
-  buttonArea:{
-    alignItems: 'flex-end',
+  buttonArea: {
+    alignItems: 'flex-end'
   },
-  button:{
-    backgroundColor:'#F0F0F0',
-    width:100,
-    borderRadius:15,
-    alignItems:"center",
-    justifyContent:'center'
+  button: {
+    backgroundColor: '#F0F0F0',
+    width: 100,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
-})
+});
