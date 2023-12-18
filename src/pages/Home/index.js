@@ -23,6 +23,7 @@ export default function Home({ navigation }){
         text=""
         action="Acessar"
         navigation={navigation}
+        name="Custom"
       />
       <MenuCard 
         icon="stats-chart"
