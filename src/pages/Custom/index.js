@@ -1,11 +1,11 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Slider from '@react-native-community/slider';
 import { useState } from 'react';
 import ToggleArea from './ToggleArea';
+import Search from './Search';
 
 export default function Custom({ navigation }) {
   const [goal, setGoal] = useState(100);
@@ -81,8 +81,21 @@ export default function Custom({ navigation }) {
             setValue={setPreventiva}
           />
         </View>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Questões de provas específicas:</Text>
+          <Search />
+        </View>
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>Questões de temas específicos:</Text>
+          <Search />
+        </View>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Questions')}
+        >
+          <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Começar</Text>
+        </TouchableOpacity>
       </LinearGradient>
-      <Footer />
     </View>
   );
 }
@@ -100,7 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(175,90,193,1)',
     borderRadius: 10,
     padding: 10,
-    height: '80%',
+    height: '90%',
     width: '100%',
     alignItems: 'center',
     gap: 10
@@ -162,5 +175,12 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 18,
     fontWeight: 'bold'
+  },
+  button: {
+    backgroundColor: '#F0F0F0',
+    width: 150,
+    borderRadius: 15,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
